@@ -1,59 +1,32 @@
-CodeBook for the tidy dataset
-=============================
+# About source data
 
-Data source
------------
-This dataset is derived from the "Human Activity Recognition Using Smartphones Data Set" which was originally made avaiable here: http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones
+As sourse data for work was used Human Activity Recognition Using Smartphones Data Set. A full description is available at the site where the data was obtained: http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones Here are the data for the project: https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip
 
-Feature Selection 
------------------
-I refer you to the README and features.txt files in the original dataset to learn more about the feature selection for this dataset. And there you will find the follow description:
+# About R script
 
-The features selected for this database come from the accelerometer and gyroscope 3-axial raw signals tAcc-XYZ and tGyro-XYZ. These time domain signals (prefix 't' to denote time) were captured at a constant rate of 50 Hz. Then they were filtered using a median filter and a 3rd order low pass Butterworth filter with a corner frequency of 20 Hz to remove noise. Similarly, the acceleration signal was then separated into body and gravity acceleration signals (tBodyAcc-XYZ and tGravityAcc-XYZ) using another low pass Butterworth filter with a corner frequency of 0.3 Hz. 
+File with R code "run_analysis.R" perform 5 following steps (in accordance assigned task of course work):
 
-Subsequently, the body linear acceleration and angular velocity were derived in time to obtain Jerk signals (tBodyAccJerk-XYZ and tBodyGyroJerk-XYZ). Also the magnitude of these three-dimensional signals were calculated using the Euclidean norm (tBodyAccMag, tGravityAccMag, tBodyAccJerkMag, tBodyGyroMag, tBodyGyroJerkMag). 
+# Merging the training and the test sets to create one data set.
+1.1 Reading files
+1.1.1 Reading trainings tables
+1.1.2 Reading testing tables
+1.1.3 Reading feature vector
+1.1.4 Reading activity labels
+1.2 Assigning column names
+1.3 Merging all data in one set
+# Extracting only the measurements on the mean and standard deviation for each measurement
+2.1 Reading column names
+2.2 Create vector for defining ID, mean and standard deviation
+2.3 Making nessesary subset from setAllInOne
+# Using descriptive activity names to name the activities in the data set
+Appropriately labeling the data set with descriptive variable names
+# Creating a second, independent tidy data set with the average of each variable for each activity and each subject
+5.1 Making second tidy data set
+5.2 Writing second tidy data set in txt file
+PS..The code takes for granted all the data is present in the same folder, un-compressed and without names altered.
 
-Finally a Fast Fourier Transform (FFT) was applied to some of these signals producing fBodyAcc-XYZ, fBodyAccJerk-XYZ, fBodyGyro-XYZ, fBodyAccJerkMag, fBodyGyroMag, fBodyGyroJerkMag. (Note the 'f' to indicate frequency domain signals). 
+# About variables:
 
-The reasoning behind my selection of features is that the assignment explicitly states "Extracts only the measurements on the mean and standard deviation for each measurement."
-To be complete, I included all variables having to do with mean or standard deviation.
-
-In short, for this derived dataset, these signals were used to estimate variables of the feature vector for each pattern:  
-'-XYZ' is used to denote 3-axial signals in the X, Y and Z directions.
-
-* tBodyAcc-XYZ
-* tGravityAcc-XYZ
-* tBodyAccJerk-XYZ
-* tBodyGyro-XYZ
-* tBodyGyroJerk-XYZ
-* tBodyAccMag
-* tGravityAccMag
-* tBodyAccJerkMag
-* tBodyGyroMag
-* tBodyGyroJerkMag
-* fBodyAcc-XYZ
-* fBodyAccJerk-XYZ
-* fBodyGyro-XYZ
-* fBodyAccMag
-* fBodyAccJerkMag
-* fBodyGyroMag
-* fBodyGyroJerkMag
-
-The set of variables that were estimated (and kept for this assignment) from these signals are: 
-
-* mean(): Mean value
-* std(): Standard deviation
-
-Additional vectors obtained by averaging the signals in a signal window sample. These are used on the angle() variable:
-
-* gravityMean
-* tBodyAccMean
-* tBodyAccJerkMean
-* tBodyGyroMean
-* tBodyGyroJerkMean
-
-Other estimates have been removed for the purpose of this excercise.
-
-Note: features are normalized and bounded within [-1,1].
-
-The resulting variable names are of the following form: tbodyaccmeanx, which means the mean value of tBodyAcc-XYZ.
+x_train, y_train, x_test, y_test, subject_train and subject_test contain the data from the downloaded files.
+x_data, y_data and subject_data merge the previous datasets to further analysis.
+features contains the correct names for the x_data dataset, which are applied to the column names stored in
